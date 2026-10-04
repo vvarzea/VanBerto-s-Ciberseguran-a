@@ -1,4 +1,5 @@
 {
+  "id": "./",
   "name": "Central de Missões do VanBerto's",
   "short_name": "VanBerto's",
   "description": "9 jogos sobre cibersegurança — escolhe a tua missão.",
@@ -6,21 +7,15 @@
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#14052e",
+  "background_color": "#ffffff",
   "theme_color": "#14052e",
+  "lang": "pt-PT",
   "icons": [
-    {
-      "src": "icon-128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icon-256.png",
-      "sizes": "256x256",
-      "type": "image/png",
-      "purpose": "any"
-    }
-  ],
-  "lang": "pt-PT"
+    { "src": "icon-128.png", "sizes": "128x128", "type": "image/png", "purpose": "any" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-256.png", "sizes": "256x256", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
 }
