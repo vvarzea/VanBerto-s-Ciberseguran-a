@@ -1,0 +1,26 @@
+{
+  "name": "Central de Missões do VanBerto's",
+  "short_name": "VanBerto's",
+  "description": "9 jogos sobre cibersegurança — escolhe a tua missão.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#14052e",
+  "theme_color": "#14052e",
+  "icons": [
+    {
+      "src": "icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "lang": "pt-PT"
+}
