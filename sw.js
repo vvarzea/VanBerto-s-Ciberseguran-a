@@ -1,4 +1,4 @@
-const CACHE='vanberto-central-v4';
+const CACHE='vanberto-central-v5';
 // Essenciais: se faltar um, a instalação falha (e deve falhar).
 const CORE=['./','index.html','manifest.webmanifest','favicon.png','apple-touch-icon.png','icon-128.png','icon-192.png','icon-256.png','icon-512.png'];
 // Fontes: tolerantes — se algum caminho estiver errado, não impede o service worker de instalar.
