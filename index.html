@@ -405,6 +405,9 @@ body::before{display:none;}
 .train-canvas{width:100%;display:block;background:linear-gradient(180deg,#060c28 0%,#0a1540 100%);border-bottom:3px solid var(--ink);}
 .comboio-info{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 14px 12px;}
 .game-card.comboio .game-name{font-size:clamp(16px,2vw,20px);}
+.card-foot{flex-shrink:0;display:flex;flex-wrap:wrap;justify-content:center;column-gap:10px;padding:0 0 4px;border-top:2px dotted rgba(30,27,75,.2);}
+.card-foot .reset-btn{margin:2px 0 0;min-height:40px;}
+@media(max-width:700px){.card-foot{padding-right:66px;padding-left:6px;}.card-foot .reset-btn{padding:6px 8px;}}
 </style>
 </head>
 <body>
@@ -442,6 +445,7 @@ body::before{display:none;}
     </div>
 
     <div class="games-section" id="games"></div>
+    <div class="card-foot" id="card-foot"></div>
   </main>
 
   <div id="fixed-robot-wrap" role="complementary" aria-label="Mascote VanBerto's">
@@ -490,12 +494,12 @@ function markPlayed(id){try{const p=getPlayed();if(p.indexOf(id)<0){p.push(id);l
   }).join('');
   document.getElementById('total-a').textContent=total;document.getElementById('total-b').textContent=total;
   const box=document.getElementById('games');
-  const btn=document.createElement('button');btn.type='button';btn.className='reset-btn';btn.textContent='↺ Recomeçar (limpar os ✓)';box.appendChild(btn);
+  const btn=document.createElement('button');btn.type='button';btn.className='reset-btn';btn.textContent='↺ Recomeçar (limpar os ✓)';
   function refresh(){const p=getPlayed();box.querySelectorAll('.game-card').forEach(function(a){a.classList.toggle('played',p.indexOf(a.dataset.id)>=0);});btn.hidden=!p.length;}
   box.addEventListener('click',function(e){const a=e.target.closest('.game-card');if(a)markPlayed(a.dataset.id);});
   btn.addEventListener('click',function(){try{localStorage.removeItem('vb-played');}catch(e){}refresh();});
   window.addEventListener('pageshow',refresh);refresh();
-  const root=document.documentElement,pb=document.createElement('button');pb.type='button';pb.className='reset-btn';box.appendChild(pb);
+  const root=document.documentElement,pb=document.createElement('button');pb.type='button';pb.className='reset-btn';document.getElementById('card-foot').appendChild(pb);
   function setAnim(off,save){root.classList.toggle('no-anim',off);pb.setAttribute('aria-pressed',off);pb.textContent=off?'▶ Ativar animações':'⏸ Pausar animações';if(save){try{localStorage.setItem('vb-anim',off?'off':'on');}catch(e){}}}
   let saved=null;try{saved=localStorage.getItem('vb-anim');}catch(e){}
   setAnim(saved==='off',false);pb.addEventListener('click',function(){setAnim(!root.classList.contains('no-anim'),true);});
