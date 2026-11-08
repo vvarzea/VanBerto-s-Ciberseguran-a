@@ -12,10 +12,10 @@
 <meta property="og:title" content="Central de Missões do VanBerto's — Cibersegurança">
 <meta property="og:description" content="9 jogos sobre cibersegurança para aprender a proteger-te online.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#14052e">
+<meta name="theme-color" content="#fff8e7">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="VanBerto's">
 <style>
 :where(h1,h2,h3){margin:0;font:inherit;}
@@ -333,6 +333,74 @@ body::before{
   padding:3px 10px;border-radius:20px;
   border:1px solid rgba(255,255,255,0.10);
 }
+/* ===== Estilo "Hora do Código": creme com pontinhos, contornos escuros e sombras de botão ===== */
+:root{--ink:#1e1b4b;--sun:#ffd23f;--coral:#ff6b6b;--mint:#2ee6a6;--sky:#4cc9f0;--grape:#7c3aed;--cream:#fff8e7;}
+body{background-color:var(--cream);background-image:radial-gradient(rgba(255,150,60,.30) 1.4px,transparent 1.6px);background-size:22px 22px;}
+body::before{display:none;}
+.card{background:#fff;border:3px solid var(--ink);box-shadow:0 6px 0 var(--ink);}
+.modal-hero{background:linear-gradient(#fff,var(--cream));border-bottom:3px solid var(--ink);}
+.modal-hero::before,.modal-hero::after{display:none;}
+.hero-icon{width:1.5em;height:1.5em;display:flex;align-items:center;justify-content:center;background:var(--sun);border:3px solid var(--ink);border-radius:50%;box-shadow:0 4px 0 var(--ink);filter:none;animation:none;}
+.modal-title{background:none;-webkit-text-fill-color:currentColor;color:var(--ink);animation:none;font-weight:700;}
+.modal-sub{color:var(--grape);opacity:1;font-weight:800;}
+.stat-badge{background:var(--sun);border:2px solid var(--ink);color:var(--ink);box-shadow:0 2px 0 var(--ink);}
+.stat-badge:nth-child(2){background:var(--mint);}
+.stat-badge:nth-child(3){background:var(--sky);}
+.stat-badge:nth-child(4){background:#ffb3b3;}
+.stat-badge:nth-child(5){background:#d8c7ff;}
+.games-section{scrollbar-color:var(--ink) transparent;}
+.games-section::-webkit-scrollbar-thumb,.games-section::-webkit-scrollbar-thumb:hover{background:var(--ink);}
+.section-divider{color:var(--ink);}
+.section-divider::after{content:'';height:0;align-self:center;border-top:3px dotted rgba(30,27,75,.28);padding:0;margin-left:6px;}
+.section-count{background:var(--sun);border:2px solid var(--ink);color:var(--ink);}
+.game-card{background:#fff;border:3px solid var(--ink);border-radius:18px;box-shadow:0 5px 0 var(--ink);transition:transform .08s,box-shadow .08s;}
+.game-card::before{opacity:.14;}
+@media(hover:hover){
+.game-card:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--ink);}
+.game-card:hover::before{opacity:.26;}
+}
+.game-card:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink);}
+.game-card:focus-visible{outline:3px solid var(--grape);outline-offset:3px;}
+.game-card.played .game-name::after{color:#16a34a;}
+.game-icon-tile{background:var(--gc);border:3px solid var(--ink);box-shadow:0 3px 0 var(--ink);filter:none;}
+.game-name{color:var(--ink);}
+.game-desc{color:#4a4872;}
+.game-tag{color:var(--ink);border:2px solid var(--ink);box-shadow:none;}
+.reset-btn{background:#fff;color:var(--ink);border:2.5px solid var(--ink);box-shadow:0 3px 0 var(--ink);}
+.reset-btn:active{transform:translateY(3px);box-shadow:none;}
+.reset-btn:focus-visible{outline:3px solid var(--grape);}
+#fixed-vb-robot,#fixed-vb-robot:hover{filter:drop-shadow(0 4px 0 rgba(30,27,75,.35));}
+#fixed-robot-name{color:var(--ink);text-shadow:none;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:0 8px;box-shadow:0 2px 0 var(--ink);}
+#prof-tag{color:var(--ink);background:#fff;border:2px solid var(--ink);box-shadow:0 2px 0 var(--ink);font-weight:700;}
+
+/* secções que abrem e fecham (só uma aberta de cada vez) */
+.sec{flex-shrink:0;margin:min(1vh,9px) 0;}
+.sec>summary{list-style:none;cursor:pointer;margin:0;min-height:46px;background:#fff;border:3px solid var(--ink);border-radius:14px;box-shadow:0 4px 0 var(--ink);padding:6px 12px;font-size:clamp(13px,1.2vw,15px);transition:transform .08s,box-shadow .08s;}
+.sec>summary::-webkit-details-marker{display:none;}
+.sec>summary::after{display:none;}
+.sec>summary:hover{background:#fffbea;}
+.sec>summary:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink);}
+.sec>summary:focus-visible{outline:3px solid var(--grape);outline-offset:3px;}
+.sec-title{flex:1;min-width:0;}
+.sec-arrow{font-size:18px;line-height:1;transition:transform .2s;}
+.sec[open]>summary{background:var(--sun);}
+.sec[open]>summary .sec-arrow{transform:rotate(180deg);}
+.sec[open]>.games-grid{margin-top:10px;margin-bottom:6px;}
+
+/* telemóvel: cabeçalho compacto, sem balão e com o rodapé fora da lista */
+@media(max-width:700px){
+.hero-stats{display:none;}
+.hero-icon{font-size:30px;margin-bottom:4px;}
+.modal-title{font-size:clamp(22px,6.4vw,30px);}
+#fixed-bubble{display:none;}
+#prof-tag{position:static;align-self:center;margin-top:8px;flex-shrink:0;font-size:12px;}
+.games-section{padding-bottom:70px;}
+}
+
+/* botões secundários (Recomeçar / Pausar animações): discretos, como ligações */
+.reset-btn{background:none;border:none;box-shadow:none;color:#4a4872;font:700 12px 'Nunito',sans-serif;text-decoration:underline;text-underline-offset:3px;border-radius:10px;padding:6px 12px;margin:6px 0 0;}
+.reset-btn:hover{color:var(--ink);background:rgba(255,210,63,.35);}
+.reset-btn:active{transform:none;box-shadow:none;background:rgba(255,210,63,.55);}
 </style>
 </head>
 <body>
@@ -385,9 +453,9 @@ body::before{
 const NEW_TAB=false; // true = abrir cada jogo num novo separador
 const BASE='https://vvarzea.github.io/VanBerto-s-Ciberseguranca-';
 const SECTIONS=[
- {t:'🎯 Missão & Aventura',g:[{id:'missao',u:'https://vvarzea.github.io/VanBerto-s-Missao-Ciberseguranca/',i:'🛡️',n:'Missão Cibersegurança',d:'Explora 4 mundos, enfrenta os chefes e torna-te um verdadeiro herói digital.',tag:'20 níveis · Fácil / Difícil / Extremo',c:'#ff6b35',r:'255,107,53,0.55'}]},
+ {t:'🎯 Missão & Aventura',g:[{id:'missao',u:'https://vvarzea.github.io/VanBerto-s-Missao-Ciberseguranca/',i:'🛡️',n:'Missão Cibersegurança',d:'Explora 4 mundos, enfrenta os chefes e torna-te um verdadeiro herói digital.',tag:'20 níveis · Fácil / Difícil / Extremo',c:'#ff6b35',r:'255,107,53,0.55'},
+  {id:'codigo',p:'Codigo',i:'💻',n:'Código',d:'Guia o robô pela grelha e programa-o para cumprir a missão.',tag:'Por ciclo',c:'#16a34a',r:'22,163,74,0.45'}]},
  {t:'🧠 Pensar & Resolver',g:[
-  {id:'codigo',p:'Codigo',i:'🤖',n:'Código',d:'Guia o robô pela grelha e programa-o para cumprir a missão.',tag:'Por ciclo',c:'#16a34a',r:'22,163,74,0.45'},
   {id:'puzzle',p:'Puzzle',i:'🧩',n:'Puzzle',d:'Reconstrói a imagem peça a peça e descobre uma curiosidade.',tag:'6 a 48 peças',c:'#a855f7',r:'168,85,247,0.50'},
   {id:'regras',p:'Regras',i:'📋',n:'Regras',d:'Arrasta cada situação para a regra certa de proteção online.',tag:'8 regras',c:'#ffd700',r:'255,215,0,0.50'}]},
  {t:'📝 Palavras & Letras',g:[
@@ -403,14 +471,14 @@ function getPlayed(){try{return JSON.parse(localStorage.getItem('vb-played')||'[
 function markPlayed(id){try{const p=getPlayed();if(p.indexOf(id)<0){p.push(id);localStorage.setItem('vb-played',JSON.stringify(p));}}catch(e){}}
 (function renderGames(){
   const played=getPlayed();let total=0;
-  document.getElementById('games').innerHTML=SECTIONS.map(function(sec){
+  document.getElementById('games').innerHTML=SECTIONS.map(function(sec,si){
     total+=sec.g.length;
-    return '<h2 class="section-divider">'+esc(sec.t)+' <span class="section-count">'+sec.g.length+(sec.g.length===1?' jogo':' jogos')+'</span></h2>'+
+    return '<details class="sec" name="sec"'+(si===0?' open':'')+'><summary class="section-divider"><span class="sec-title">'+esc(sec.t)+'</span><span class="section-count">'+sec.g.length+(sec.g.length===1?' jogo':' jogos')+'</span><span class="sec-arrow" aria-hidden="true">▾</span></summary>'+
     '<div class="games-grid '+(sec.g.length===1?'games-grid-1':'games-grid-2')+'">'+sec.g.map(function(g){
       const url=g.u||(BASE+g.p+'/');
       return '<a class="game-card'+(played.indexOf(g.id)>=0?' played':'')+'" data-id="'+g.id+'" href="'+url+'"'+(NEW_TAB?' target="_blank" rel="noopener noreferrer"':' rel="noopener"')+' style="--gc:'+g.c+';--gc-glow:rgba('+g.r+');">'+
       '<div class="game-icon-tile" aria-hidden="true">'+g.i+'</div><div class="game-info"><h3 class="game-name">'+esc(g.n)+'</h3><div class="game-desc">'+esc(g.d)+'</div><span class="game-tag">'+esc(g.tag)+'</span></div></a>';
-    }).join('')+'</div>';
+    }).join('')+'</div></details>';
   }).join('');
   document.getElementById('total-a').textContent=total;document.getElementById('total-b').textContent=total;
   const box=document.getElementById('games');
