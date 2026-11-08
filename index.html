@@ -402,7 +402,7 @@ body::before{display:none;}
 /* comboio em destaque */
 .game-card.comboio{flex-direction:column;align-items:stretch;padding:0;gap:0;overflow:hidden;text-align:center;}
 .game-card.comboio::before{display:none;}
-.train-canvas{width:100%;display:block;background:linear-gradient(180deg,#060c28 0%,#0a1540 100%);border-bottom:3px solid var(--ink);}
+.train-canvas{width:100%;display:block;background:linear-gradient(180deg,#5ab4f0 0%,#cdeeff 100%);border-bottom:3px solid var(--ink);}
 .comboio-info{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 14px 12px;}
 .game-card.comboio .game-name{font-size:clamp(16px,2vw,20px);}
 .card-foot{flex-shrink:0;display:flex;flex-wrap:wrap;justify-content:center;column-gap:10px;padding:0 0 4px;border-top:2px dotted rgba(30,27,75,.2);}
@@ -491,7 +491,7 @@ function markPlayed(id){try{const p=getPlayed();if(p.indexOf(id)<0){p.push(id);l
     total+=sec.g.length;
     return '<details class="sec" name="sec"'+(si===0?' open':'')+'><summary class="section-divider"><span class="sec-title">'+esc(sec.t)+'</span><span class="section-count">'+sec.g.length+(sec.g.length===1?' jogo':' jogos')+'</span><span class="sec-arrow" aria-hidden="true">▾</span></summary>'+
     (function(){const F=sec.g.filter(function(x){return x.feat;}),R=sec.g.filter(function(x){return !x.feat;});
-      return (F.length?'<div class="games-grid games-grid-1">'+F.map(card).join('')+'</div>':'')+(R.length?'<div class="games-grid '+(R.length===1&&!F.length?'games-grid-1':'games-grid-2')+'">'+R.map(card).join('')+'</div>':'');})()+'</details>';
+      return (R.length?'<div class="games-grid '+(R.length===1&&!F.length?'games-grid-1':'games-grid-2')+'">'+R.map(card).join('')+'</div>':'')+(F.length?'<div class="games-grid games-grid-1">'+F.map(card).join('')+'</div>':'');})()+'</details>';
   }).join('');
   document.getElementById('total-a').textContent=total;document.getElementById('total-b').textContent=total;
   const box=document.getElementById('games');
