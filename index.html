@@ -408,6 +408,7 @@ body::before{display:none;}
 .card-foot{flex-shrink:0;display:flex;flex-wrap:wrap;justify-content:center;column-gap:10px;padding:0 0 4px;border-top:2px dotted rgba(30,27,75,.2);}
 .card-foot .reset-btn{margin:2px 0 0;min-height:40px;}
 @media(max-width:700px){.card-foot{padding-right:66px;padding-left:6px;}.card-foot .reset-btn{padding:6px 8px;}}
+.comboio-info .game-tag{align-self:center;}
 </style>
 </head>
 <body>
@@ -1117,7 +1118,7 @@ window.drawVBAtual=drawVanBerto;
     _flagCache={};
   }
   resizeTrain();
-  if(window.ResizeObserver)new ResizeObserver(function(){resizeTrain();if(TRAIN_REDUCED)draw();}).observe(cv.parentElement);
+  if(window.ResizeObserver)new ResizeObserver(function(){resizeTrain();pausedKey='';if(TRAIN_REDUCED||document.documentElement.classList.contains('no-anim'))draw();}).observe(cv.parentElement);
   window.addEventListener('resize', ()=>{ resizeTrain(); if(TRAIN_REDUCED) draw(); });
 
   function drawRail(){
@@ -1145,8 +1146,11 @@ window.drawVBAtual=drawVanBerto;
     ctx.restore();
   }
 
+  let pausedKey='';
   function frame(){
-    if(document.hidden||!cv.offsetParent||document.documentElement.classList.contains('no-anim')){requestAnimationFrame(frame);return;}
+    if(document.hidden||!cv.offsetParent){requestAnimationFrame(frame);return;}
+    if(document.documentElement.classList.contains('no-anim')){const k=cv.width+'x'+cv.height;if(pausedKey!==k){draw();pausedKey=k;}requestAnimationFrame(frame);return;}
+    pausedKey='';
     bgTime += 0.016;
     wheelAngle += 0.075;                         // rodas a rodar para a frente (o comboio segue para a direita)
     const v = 0.075*LW*0.14;                     // velocidade do chão = velocidade das rodas (sem derrapar)
