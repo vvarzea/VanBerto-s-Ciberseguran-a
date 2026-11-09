@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>Central de Missões do VanBerto's — Cibersegurança</title>
+<title>Central de Missões do VanBerto's — Cibersegurança e Internet Mais Segura</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="description" content="9 jogos sobre cibersegurança para aprender a proteger-te online. Escolhe a tua missão com o VanBerto's!">
-<meta property="og:title" content="Central de Missões do VanBerto's — Cibersegurança">
-<meta property="og:description" content="9 jogos sobre cibersegurança para aprender a proteger-te online.">
+<meta name="description" content="10 jogos para aprenderes cibersegurança e a usar a internet com mais segurança. Escolhe a tua missão com o VanBerto's!">
+<meta property="og:title" content="Central de Missões do VanBerto's — Cibersegurança e Internet Mais Segura">
+<meta property="og:description" content="10 jogos para aprenderes cibersegurança e a usar a internet com mais segurança.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#fff8e7">
 <meta name="mobile-web-app-capable" content="yes">
@@ -151,6 +151,7 @@ body::before{
   animation:titleShimmer 4s linear infinite;
   margin-bottom:2px;position:relative;z-index:1;line-height:1.15;
 }
+.modal-title-sub{display:block;font-size:.62em;font-weight:600;line-height:1.2;margin-top:2px;}
 @keyframes titleShimmer{0%{background-position:0% center;}100%{background-position:300% center;}}
 
 .modal-sub{
@@ -215,6 +216,7 @@ body::before{
 .games-grid{display:grid;gap:clamp(7px,0.9vw,14px);flex-shrink:0;}
 .games-grid-1{grid-template-columns:1fr;}
 .games-grid-2{grid-template-columns:repeat(2,1fr);}
+.games-grid-2>.game-card:last-child:nth-child(odd){grid-column:1/-1;}
 
 @media(max-width:480px){
   .games-grid-2{grid-template-columns:1fr;}
@@ -434,10 +436,10 @@ body::before{display:none;}
 
     <div class="modal-hero">
       <div class="hero-icon" aria-hidden="true">🛡️</div>
-      <h1 class="modal-title">Central de Missões do VanBerto's</h1>
-      <div class="modal-sub"><span id="total-a">9</span> jogos sobre cibersegurança — escolhe a tua missão</div>
+      <h1 class="modal-title">Central de Missões do VanBerto's<span class="modal-title-sub">Cibersegurança e Internet Mais Segura</span></h1>
+      <div class="modal-sub"><span id="total-a">10</span> jogos — escolhe a tua missão</div>
       <div class="hero-stats">
-        <span class="stat-badge">🛡️ <span id="total-b">9</span> jogos</span>
+        <span class="stat-badge">🛡️ <span id="total-b">10</span> jogos</span>
         <span class="stat-badge">🎯 Aventura</span>
         <span class="stat-badge">🧠 Pensar</span>
         <span class="stat-badge">📝 Palavras</span>
@@ -463,7 +465,9 @@ const NEW_TAB=false; // true = abrir cada jogo num novo separador
 const BASE='https://vvarzea.github.io/VanBerto-s-Ciberseguranca-';
 const SECTIONS=[
  {t:'🎯 Missão & Aventura',g:[{id:'missao',u:'https://vvarzea.github.io/VanBerto-s-Missao-Ciberseguranca/',i:'🛡️',n:'Missão Cibersegurança',d:'Explora 4 mundos, enfrenta os chefes e torna-te um verdadeiro herói digital.',tag:'20 níveis · Fácil / Difícil / Extremo',c:'#ff6b35',r:'255,107,53,0.55'},
-  {id:'codigo',p:'Codigo',i:'💻',n:'Código',d:'Guia o robô pela grelha e programa-o para cumprir a missão.',tag:'Por ciclo',c:'#16a34a',r:'22,163,74,0.45'}]},
+  {id:'internet',u:'https://vvarzea.github.io/VanBerto-s-Missao-Internet-Mais-Segura/',i:'🌐',n:'Missão Internet Mais Segura',d:'Explora 4 mundos, enfrenta o malware e torna-te um verdadeiro herói digital.',tag:'4 mundos',c:'#ec4899',r:'236,72,153,0.50'},
+  {id:'codigo',p:'Codigo',i:'💻',n:'Código',d:'Guia o robô pela grelha e programa-o para cumprir a missão.',tag:'Por ciclo',c:'#16a34a',r:'22,163,74,0.45'}
+]},
  {t:'🧠 Pensar & Resolver',g:[
   {id:'puzzle',p:'Puzzle',i:'🧩',n:'Puzzle',d:'Reconstrói a imagem peça a peça e descobre uma curiosidade.',tag:'6 a 48 peças',c:'#a855f7',r:'168,85,247,0.50'},
   {id:'regras',p:'Regras',i:'📋',n:'Regras',d:'Arrasta cada situação para a regra certa de proteção online.',tag:'8 regras',c:'#ffd700',r:'255,215,0,0.50'}]},
