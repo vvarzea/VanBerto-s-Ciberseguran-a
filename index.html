@@ -438,6 +438,21 @@ body::before{display:none;}
 .card-foot .reset-btn{margin:2px 0 0;min-height:40px;}
 @media(max-width:700px){.card-foot{padding-right:66px;padding-left:6px;}.card-foot .reset-btn{padding:6px 8px;}}
 .comboio-info .game-tag{align-self:center;}
+
+/* botões das secções com mais destaque */
+.sec{margin:min(1.4vh,12px) 0;}
+.sec>summary{min-height:64px;padding:8px 14px 8px 16px;gap:12px;font-size:clamp(16px,1.9vw,21px);font-weight:700;letter-spacing:1.6px;border-left-width:14px;border-radius:18px;box-shadow:0 6px 0 var(--ink);}
+.sec>summary:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--ink);}
+.sec>summary:active{transform:translateY(4px);box-shadow:0 2px 0 var(--ink);}
+.sec-ico{width:44px;height:44px;font-size:23px;border-width:3px;box-shadow:0 3px 0 var(--ink);}
+.sec>summary .section-count{font-size:13px;padding:4px 12px;}
+.sec-arrow{flex:none;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:#fff;border:2.5px solid var(--ink);border-radius:50%;font-size:15px;box-shadow:0 2px 0 var(--ink);}
+@supports(background:color-mix(in srgb,red 50%,white)){
+.sec>summary{background:color-mix(in srgb,var(--sc) 16%,#fff);}
+.sec>summary:hover{background:color-mix(in srgb,var(--sc) 28%,#fff);}
+.sec[open]>summary{background:color-mix(in srgb,var(--sc) 45%,#fff);}
+.sec[open]>summary:hover{background:color-mix(in srgb,var(--sc) 52%,#fff);}
+}
 </style>
 </head>
 <body>
