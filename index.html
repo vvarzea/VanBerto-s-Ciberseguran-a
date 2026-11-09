@@ -401,6 +401,33 @@ body::before{display:none;}
 .reset-btn:hover{color:var(--ink);background:rgba(255,210,63,.35);}
 .reset-btn:active{transform:none;box-shadow:none;background:rgba(255,210,63,.55);}
 
+/* animações suaves (respeitam "Pausar animações" e o modo de movimento reduzido) */
+@keyframes cardIn{0%{opacity:0;transform:translateY(14px) scale(.96);}100%{opacity:1;transform:none;}}
+@keyframes titleIn{0%{opacity:0;transform:translateY(-10px) scale(.96);}100%{opacity:1;transform:none;}}
+@keyframes heroBob{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-3px) rotate(-5deg);}}
+.sec[open]>.games-grid .game-card{animation:cardIn .42s cubic-bezier(.34,1.56,.64,1) backwards;}
+.sec[open]>.games-grid .game-card:nth-child(2){animation-delay:.08s;}
+.sec[open]>.games-grid .game-card:nth-child(3){animation-delay:.16s;}
+.sec[open]>.games-grid .game-card.comboio{animation-delay:.16s;}
+.modal-title{animation:titleIn .6s cubic-bezier(.34,1.56,.64,1) backwards;}
+.hero-icon{animation:heroBob 2.8s ease-in-out infinite;}
+.stat-badge{animation:cardIn .4s cubic-bezier(.34,1.56,.64,1) backwards;}
+.stat-badge:nth-child(1){animation-delay:.25s;}
+.stat-badge:nth-child(2){animation-delay:.32s;}
+.stat-badge:nth-child(3){animation-delay:.39s;}
+.stat-badge:nth-child(4){animation-delay:.46s;}
+.stat-badge:nth-child(5){animation-delay:.53s;}
+
+/* cor por secção + ícone em bolinha */
+.sec-ico{flex:none;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:17px;line-height:1;background:var(--sc,var(--sun));border:2.5px solid var(--ink);border-radius:50%;box-shadow:0 2px 0 var(--ink);}
+.sec>summary{border-left:10px solid var(--sc,var(--ink));}
+.sec[open]>summary{background:#fffbea;}
+@supports(background:color-mix(in srgb,red 50%,white)){
+.sec[open]>summary{background:color-mix(in srgb,var(--sc) 22%,#fff);}
+.sec>summary:hover{background:color-mix(in srgb,var(--sc) 12%,#fff);}
+.sec[open]>summary:hover{background:color-mix(in srgb,var(--sc) 28%,#fff);}
+}
+
 /* comboio em destaque */
 .game-card.comboio{flex-direction:column;align-items:stretch;padding:0;gap:0;overflow:hidden;text-align:center;}
 .game-card.comboio::before{display:none;}
@@ -439,7 +466,6 @@ body::before{display:none;}
       <h1 class="modal-title">Central de Missões do VanBerto's<span class="modal-title-sub">Cibersegurança e Internet Mais Segura</span></h1>
       <div class="modal-sub"><span id="total-a">10</span> jogos — escolhe a tua missão</div>
       <div class="hero-stats">
-        <span class="stat-badge">🛡️ <span id="total-b">10</span> jogos</span>
         <span class="stat-badge">🎯 Aventura</span>
         <span class="stat-badge">🧠 Pensar</span>
         <span class="stat-badge">📝 Palavras</span>
@@ -464,17 +490,17 @@ body::before{display:none;}
 const NEW_TAB=false; // true = abrir cada jogo num novo separador
 const BASE='https://vvarzea.github.io/VanBerto-s-Ciberseguranca-';
 const SECTIONS=[
- {t:'🎯 Missão & Aventura',g:[{id:'missao',u:'https://vvarzea.github.io/VanBerto-s-Missao-Ciberseguranca/',i:'🛡️',n:'Missão Cibersegurança',d:'Explora 4 mundos, enfrenta os chefes e torna-te um verdadeiro herói digital.',tag:'20 níveis · Fácil / Difícil / Extremo',c:'#ff6b35',r:'255,107,53,0.55'},
+ {t:'🎯 Missão & Aventura',c:'#ff6b35',g:[{id:'missao',u:'https://vvarzea.github.io/VanBerto-s-Missao-Ciberseguranca/',i:'🛡️',n:'Missão Cibersegurança',d:'Explora 4 mundos, enfrenta os chefes e torna-te um verdadeiro herói digital.',tag:'20 níveis · Fácil / Difícil / Extremo',c:'#ff6b35',r:'255,107,53,0.55'},
   {id:'internet',u:'https://vvarzea.github.io/VanBerto-s-Missao-Internet-Mais-Segura/',i:'🌐',n:'Missão Internet Mais Segura',d:'Guia o robô pelos labirintos, responde às perguntas e foge do malware.',tag:'20 níveis · Fácil / Difícil / Extremo',c:'#ec4899',r:'236,72,153,0.50'},
   {id:'codigo',p:'Codigo',i:'💻',n:'Código',d:'Guia o robô pela grelha e programa-o para cumprir a missão.',tag:'Por ciclo',c:'#16a34a',r:'22,163,74,0.45'}
 ]},
- {t:'🧠 Pensar & Resolver',g:[
+ {t:'🧠 Pensar & Resolver',c:'#a855f7',g:[
   {id:'puzzle',p:'Puzzle',i:'🧩',n:'Puzzle',d:'Reconstrói a imagem peça a peça e descobre uma curiosidade.',tag:'6 a 48 peças',c:'#a855f7',r:'168,85,247,0.50'},
   {id:'regras',p:'Regras',i:'📋',n:'Regras',d:'Arrasta cada situação para a regra certa de proteção online.',tag:'8 regras',c:'#ffd700',r:'255,215,0,0.50'}]},
- {t:'📝 Palavras & Letras',g:[
+ {t:'📝 Palavras & Letras',c:'#84cc16',g:[
   {id:'sopa',p:'Sopa-de-Letras',i:'🔎',n:'Sopa de Letras',d:'Encontra as palavras escondidas sobre cibersegurança.',tag:'Fácil / Médio / Difícil',c:'#84cc16',r:'132,204,22,0.50'},
   {id:'cruzadas',p:'Palavras-Cruzadas',i:'✏️',n:'Palavras Cruzadas',d:'Resolve as pistas e preenche a grelha, letra a letra.',tag:'Fácil / Médio / Difícil',c:'#ef4444',r:'239,68,68,0.55'}]},
- {t:'⚡ Rápidos & Reflexos',g:[
+ {t:'⚡ Rápidos & Reflexos',c:'#06b6d4',g:[
   {id:'memoria',p:'Memoria',i:'🧠',n:'Memória',d:'Vira as cartas e encontra todos os pares depressa.',tag:'Fácil / Médio / Difícil',c:'#06b6d4',r:'6,182,212,0.55'},
   {id:'comboio',feat:true,p:'Comboio',i:'🚂',n:'Comboio',d:'Apanha os balões certos antes que o tempo se esgote.',tag:'20 níveis',c:'#ffd23f',r:'255,210,63,0.50'},
   {id:'corrida',p:'Corrida',i:'🏁',n:'Corrida',d:'Responde bem e o teu carro avança — compete com os colegas.',tag:'Vários jogadores',c:'#f97316',r:'249,115,22,0.55'}]}
@@ -493,12 +519,16 @@ function markPlayed(id){try{const p=getPlayed();if(p.indexOf(id)<0){p.push(id);l
   }
   document.getElementById('games').innerHTML=SECTIONS.map(function(sec,si){
     total+=sec.g.length;
-    return '<details class="sec" name="sec"'+(si===0?' open':'')+'><summary class="section-divider"><span class="sec-title">'+esc(sec.t)+'</span><span class="section-count">'+sec.g.length+(sec.g.length===1?' jogo':' jogos')+'</span><span class="sec-arrow" aria-hidden="true">▾</span></summary>'+
+    return '<details class="sec" name="sec"'+(si===0?' open':'')+' style="--sc:'+sec.c+';"><summary class="section-divider"><span class="sec-ico" aria-hidden="true">'+esc(sec.t.split(' ')[0])+'</span><span class="sec-title">'+esc(sec.t.slice(sec.t.indexOf(' ')+1))+'</span><span class="section-count">'+sec.g.length+(sec.g.length===1?' jogo':' jogos')+'</span><span class="sec-arrow" aria-hidden="true">▾</span></summary>'+
     (function(){const F=sec.g.filter(function(x){return x.feat;}),R=sec.g.filter(function(x){return !x.feat;});
       return (R.length?'<div class="games-grid '+(R.length===1&&!F.length?'games-grid-1':'games-grid-2')+'">'+R.map(card).join('')+'</div>':'')+(F.length?'<div class="games-grid games-grid-1">'+F.map(card).join('')+'</div>':'');})()+'</details>';
   }).join('');
-  document.getElementById('total-a').textContent=total;document.getElementById('total-b').textContent=total;
+  document.getElementById('total-a').textContent=total;
   const box=document.getElementById('games');
+  const secs=Array.prototype.slice.call(box.querySelectorAll('details.sec'));
+  secs.forEach(function(d,i){d.querySelector('summary').addEventListener('click',function(e){
+    if(d.open){e.preventDefault();secs[(i+1)%secs.length].open=true;d.open=false;}
+  });});
   const btn=document.createElement('button');btn.type='button';btn.className='reset-btn';btn.textContent='↺ Recomeçar (limpar os ✓)';
   function refresh(){const p=getPlayed();box.querySelectorAll('.game-card').forEach(function(a){a.classList.toggle('played',p.indexOf(a.dataset.id)>=0);});btn.hidden=!p.length;}
   box.addEventListener('click',function(e){const a=e.target.closest('.game-card');if(a)markPlayed(a.dataset.id);});
