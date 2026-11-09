@@ -525,10 +525,6 @@ function markPlayed(id){try{const p=getPlayed();if(p.indexOf(id)<0){p.push(id);l
   }).join('');
   document.getElementById('total-a').textContent=total;
   const box=document.getElementById('games');
-  const secs=Array.prototype.slice.call(box.querySelectorAll('details.sec'));
-  secs.forEach(function(d,i){d.querySelector('summary').addEventListener('click',function(e){
-    if(d.open){e.preventDefault();secs[(i+1)%secs.length].open=true;d.open=false;}
-  });});
   const btn=document.createElement('button');btn.type='button';btn.className='reset-btn';btn.textContent='↺ Recomeçar (limpar os ✓)';
   function refresh(){const p=getPlayed();box.querySelectorAll('.game-card').forEach(function(a){a.classList.toggle('played',p.indexOf(a.dataset.id)>=0);});btn.hidden=!p.length;}
   box.addEventListener('click',function(e){const a=e.target.closest('.game-card');if(a)markPlayed(a.dataset.id);});
